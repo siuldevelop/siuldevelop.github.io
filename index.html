@@ -590,18 +590,22 @@
   </div>
   <div class="icon-grid">
     <div class="icon-cell">
+      <div class="ico">⚙️</div>
       <div class="lbl">Focus</div>
       <div class="val">NestJS + Node.js</div>
     </div>
     <div class="icon-cell">
+      <div class="ico">🗄️</div>
       <div class="lbl">Databases</div>
       <div class="val">SQL + Firebase</div>
     </div>
     <div class="icon-cell">
+      <div class="ico">🤖</div>
       <div class="lbl">Automation</div>
       <div class="val">Scripting + Power Apps</div>
     </div>
     <div class="icon-cell">
+      <div class="ico">📐</div>
       <div class="lbl">Interests</div>
       <div class="val">Architecture & Design</div>
     </div>
@@ -692,7 +696,7 @@
       <span>Luis Arquez</span>
     </a>
   </div>
-    © 2026 Luis Arquez. &mdash;  <span>All rights reserved.</span>
+  © 2026 Luis Arquez. &mdash;  <span>All rights reserved.</span>
 </footer>
 
 <script>
@@ -714,9 +718,6 @@
     status.className = 'form-status';
 
     const data = new FormData(form);
-    // inject recipient at runtime, never in HTML
-    data.append('_replyto', data.get('_replyto'));
-    data.append('_to', `${u}@${d}`);
 
     try {
       const res = await fetch('https://formspree.io/f/mreyvojz', {
@@ -729,10 +730,12 @@
         status.classList.add('ok');
         form.reset();
       } else {
-        throw new Error();
+        const err = await res.json();
+        status.textContent = '✗ ' + (err?.error || 'Something went wrong. Try again.');
+        status.classList.add('err');
       }
-    } catch {
-      status.textContent = '✗ Something went wrong. Try again.';
+    } catch (e) {
+      status.textContent = '✗ Network error. Try again.';
       status.classList.add('err');
     } finally {
       btn.classList.remove('loading');
