@@ -59,6 +59,37 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
+// ── Auto scroll
+const autoScrollBtn = document.getElementById('autoScrollBtn');
+const stopBtn = document.getElementById('stopScroll');
+let autoScrolling = false;
+let autoRaf = null;
+
+function autoScrollStep() {
+  if (!autoScrolling) return;
+  const maxY = document.body.scrollHeight - window.innerHeight;
+  if (window.scrollY >= maxY) { stopAutoScroll(); return; }
+  targetY = Math.min(targetY + 1.2, maxY);
+  if (!rafId) animate();
+  autoRaf = requestAnimationFrame(autoScrollStep);
+}
+
+function stopAutoScroll() {
+  autoScrolling = false;
+  cancelAnimationFrame(autoRaf);
+  stopBtn.classList.remove('visible');
+}
+
+autoScrollBtn.addEventListener('click', () => {
+  if (autoScrolling) { stopAutoScroll(); return; }
+  autoScrolling = true;
+  stopBtn.classList.add('visible');
+  autoScrollStep();
+});
+
+stopBtn.addEventListener('click', stopAutoScroll);
+window.addEventListener('wheel', () => { if (autoScrolling) stopAutoScroll(); }, { passive: true });
+
 // ── Smooth anchor navigation (works with inertial scroll)
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {

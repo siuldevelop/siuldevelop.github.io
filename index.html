@@ -6,7 +6,7 @@
 <title>Luis — Backend Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,8 +26,9 @@
   <h1 class="hero-name">Hi, I'm Luis</h1>
   <p class="hero-typewriter"><span id="typewriter"></span><span class="cursor"></span></p>
   <p class="hero-desc">Currently focused on JS + NestJS — building efficient, scalable systems for both personal and professional projects.</p>
-  <div class="scroll-hint" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-    <div class="scroll-dot"></div>scroll
+  <div class="scroll-hint" id="autoScrollBtn">
+    <div class="scroll-dot"></div>
+    Auto scroll
   </div>
 </section>
 
@@ -112,6 +113,11 @@
   </div>
   <p class="footer-copy">© 2026 Luis Arquez. &mdash; <span>All rights reserved.</span></p>
 </footer>
+
+<button id="stopScroll" aria-label="Stop auto scroll">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+  Stop
+</button>
 
 <button id="backToTop" aria-label="Back to top">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>

@@ -4,8 +4,8 @@
   --black: #050505; --surface: #0d0d0d; --surface2: #131313;
   --text: #e8f5e9; --muted: #6b8f71;
   --font-display: 'Syne', sans-serif;
-  --font-body: 'JetBrains Mono', monospace;
-  --font-serif: 'DM Serif Display', serif;
+  --font-body: 'Pixelify Sans', sans-serif;
+  --font-serif: 'Pixelify Sans', sans-serif;
 }
 html { scroll-behavior: smooth; }
 body { background: var(--black); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
@@ -49,7 +49,7 @@ section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
 
 /* ── ABOUT */
 #about { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; max-width: 1100px; margin: 0 auto; padding: 7rem 3rem; }
-.about-text { font-family: var(--font-serif); font-size: clamp(1.2rem, 2vw, 1.55rem); line-height: 1.65; color: var(--text); font-style: italic; }
+.about-text { font-family: var(--font-body); font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.65; color: var(--text); }
 .about-sub { margin-top: 1.5rem; font-family: var(--font-body); font-size: 0.82rem; color: var(--muted); line-height: 1.9; }
 .icon-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(168,255,203,0.07); border-radius: 16px; overflow: hidden; border: 0.5px solid rgba(168,255,203,0.1); }
 .icon-cell { background: var(--surface); padding: 1.8rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; transition: background 0.2s; }
@@ -87,6 +87,31 @@ section { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; }
 .form-status { font-size: 0.78rem; min-height: 1.2em; transition: color 0.3s; }
 .form-status.ok { color: var(--mint-teal); }
 .form-status.err { color: #ff6b6b; }
+
+#stopScroll {
+  position: fixed;
+  bottom: 2rem;
+  right: 5rem;
+  z-index: 200;
+  height: 44px;
+  padding: 0 1rem;
+  border-radius: 99px;
+  background: var(--surface);
+  border: 0.5px solid rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+}
+#stopScroll.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+#stopScroll:hover { background: rgba(255, 107, 107, 0.08); border-color: rgba(255, 107, 107, 0.6); }
 
 /* ── BACK TO TOP */
 #backToTop {
