@@ -16,5 +16,4 @@ A minimal personal presentation page built with vanilla HTML, CSS, and JavaScrip
 HTML · CSS · JavaScript
 
 ## Live
-
 [siuldevelop.github.io](https://siuldevelop.github.io)
